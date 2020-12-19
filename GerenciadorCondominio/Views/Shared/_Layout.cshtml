@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GerenciadorCondominio</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <environment include="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+</head>
+<body>
+    <header>
+        <nav class="grey darken-3">
+            <div class="nav-wrapper navbar-fixed">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Usuarios" asp-action="MinhasInformacoes">Minhas Informações</a></li>
+                    <li class="nav-item"><partial name="_Logout" /></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - GerenciadorCondominio - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <environment include="Development">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+        <script src="~/js/InicializarTooltips.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.sidenav').sidenav({});
+            })
+        </script>
+        @RenderSection("Scripts", required: false)
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+@using Microsoft.AspNetCore.Identity
+@using GerenciadorCondominios.Domain.Models
+@inject SignInManager<Usuario> SignInManager
+
+@if(SignInManager.IsSignedIn(User))
+{
+    <form asp-action="Logout" asp-controller="Usuario" id="formularioLogout">
+        <ul>
+            <li>
+                <a class="nav-link white-text" style="cursor:pointer;" onclick="document.getElementById('formularioLogout').submit();">Logout</a>
+            </li>
+        </ul>
+
+    </form>
+}
