@@ -32,10 +32,11 @@ namespace GerenciadorCondominios.Repository.Repositories
             }
         }
 
-        public async Task Delete(TEntity entity)
+        public async Task Delete(int id)
         {
             try
             {
+                var entity = await this.GetById(id);
                 _contexto.Set<TEntity>().Remove(entity);
                 await _contexto.SaveChangesAsync();
             }

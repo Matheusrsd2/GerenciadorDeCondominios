@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GerenciadorCondominios.ViewModels
+namespace GerenciadorCondominio.ViewModels
 {
     public class LoginViewModel
     {

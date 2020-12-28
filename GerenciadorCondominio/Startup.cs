@@ -33,10 +33,9 @@ namespace GerenciadorCondominio
             services.AddControllersWithViews();
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("ConexaoDb")));
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
-            services.AddIdentity<Usuario, Roles>(options =>
-            {
-                options.User.AllowedUserNameCharacters = "whatever";
-            }).AddEntityFrameworkStores<Context>();
+            services.AddTransient<IVeiculoRepository, VeiculoRepository>();
+            services.AddTransient<IEventoRepository, EventoRepository>();
+            services.AddIdentity<Usuario, Roles>().AddEntityFrameworkStores<Context>();
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.

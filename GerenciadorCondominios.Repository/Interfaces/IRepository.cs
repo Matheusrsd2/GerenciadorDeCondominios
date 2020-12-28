@@ -12,7 +12,7 @@ namespace GerenciadorCondominios.Repository.Interfaces
         Task<TEntity> GetById(string id);
         Task Add(TEntity entity);
         Task Update(TEntity entity);
-        Task Delete(TEntity entity);
+        Task Delete(int id);
 
 
 

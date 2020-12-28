@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +34,18 @@ namespace GerenciadorCondominios.Repository.Repositories
             }
         }
 
+        public string CodificarSenha(Usuario usuario, string senha)
+        {
+            try
+            {
+                return _userManager.PasswordHasher.HashPassword(usuario, senha);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public async Task<IdentityResult> CriarUsuario(Usuario usuario, string senha)
         {
             try
@@ -57,6 +70,10 @@ namespace GerenciadorCondominios.Repository.Repositories
             }
         }
 
+        public Task<Usuario> GetUsuarioByName(ClaimsPrincipal usuario)
+        {
+            return _userManager.FindByNameAsync(usuario.Identity.Name);
+        }
 
         public async Task LogarUsuario(Usuario usuario, bool lembrarUsuario)
         {
@@ -82,6 +99,11 @@ namespace GerenciadorCondominios.Repository.Repositories
             }
         }
 
+        public async Task UpdateUsuario(Usuario usuario)
+        {
+            await _userManager.UpdateAsync(usuario);
+        }
+
         public int VerificarSeExisteUsuario()
         {
             try
@@ -91,6 +113,19 @@ namespace GerenciadorCondominios.Repository.Repositories
             catch (Exception e)
             {
                 throw e;
+            }
+        }
+
+        public async Task<bool> VerificarSeUsuarioTemRole(Usuario usuario, string funcao)
+        {
+            try
+            {
+                return await _userManager.IsInRoleAsync(usuario, funcao);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }
