@@ -35,6 +35,9 @@ namespace GerenciadorCondominio
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             services.AddTransient<IVeiculoRepository, VeiculoRepository>();
             services.AddTransient<IEventoRepository, EventoRepository>();
+            services.AddTransient<IServicoRepository, ServicoRepository>();
+            services.AddTransient<IHistoricoRecursosRepository, HistoricoRecursosRepository>();
+            services.AddTransient<IServicoPredioRepository, ServicoPredioRepository>();
             services.AddIdentity<Usuario, Roles>().AddEntityFrameworkStores<Context>();
             services.Configure<IdentityOptions>(options =>
             {
